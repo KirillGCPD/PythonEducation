@@ -27,7 +27,18 @@ def collect_beries(berries_bed:list, brunch:int) -> int: #Собираем яг�
     else: 
         return berries_bed[(brunch-1)%l]+ berries_bed[(brunch)%l]+ berries_bed[(brunch+1)%l] #Сумма трех кустов. Делим по модулю чтоб не было выхода за пределы
     return 0
-
+#####################
+##Ищем лучший куст###
+#####################
+def maximize_beries(berries_bed:list) -> (int,int): #Не сразу прочитал услвие задачи, сначала просто задавал ответ на любом кусте.
+    current=0                                        #Для поиска лучшего добавлен этот метот, который использует предыдущий
+    max_berries=0
+    for index,branch in enumerate(berries_bed):
+        berries=collect_beries(berries_bed,index)
+        if berries>max_berries:
+            current=index
+            max_berries=berries
+    return (max_berries,current)
 
 berries=0
 berries_bed=[]
@@ -36,6 +47,6 @@ while berries>=0:
     if berries>=0:
         berries_bed.append(berries)
 print(f"Наши ягодки подросли: {berries_bed}")
-brunch_number=try_input_int("Введите номер куста: ",True)
-brunch_number=brunch_number-1 #Предполагаем, что пользователь нумерует кусты с 1, а у нас массивы с 0
-print(f"Колличество ягод собранных с {brunch_number+1} куста равно: {collect_beries(berries_bed,brunch_number)}")
+print(f"Произвожу анализ: ")
+typle_res=maximize_beries(berries_bed)
+print(f"Мы пришли к выводу, что лучше начать сбор с куста номер {typle_res[1]+1} на котором мы получим {typle_res[0]} ягод")
