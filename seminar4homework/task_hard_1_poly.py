@@ -24,7 +24,7 @@ def try_input_int(message:str, no_negative:bool=False)->int: #приглашен
                 print("Вы ввели не целочисленное число")
     return number
 
-def k_to_str(k:int,first:bool=False,last:bool=False)->str:
+def k_to_str(k:int,first:bool=False,last:bool=False)->str: #вспомогательная - коэффициент в строку
     if k==0:
         return ""
     elif k==1:
@@ -46,7 +46,7 @@ def k_to_str(k:int,first:bool=False,last:bool=False)->str:
             return f"+{k}"
     elif k<1:
         return f"{k}"
-def k_to_pow(k:int)->str:
+def k_to_pow(k:int)->str: #вспомогаельное - формируем степень
     if k==1:
         return "x"
     elif k>1:
