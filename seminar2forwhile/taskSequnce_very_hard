@@ -8,7 +8,7 @@
 
 #source_list = [1, 5, 2, 3, 4, 6, 1, 7]
 source_list = [1, 5, 2, 3, 4, 1, 7, 8 , 15 , 1 ] 
-#source_list = [1, 5, 3, 4, 1, 7, 8 , 15 , 1 ] 
+source_list = [1, 5, 3, 4, 1, 7, 8 , 15 , 1 ] 
 #source_list = [1,23, 5, 66 ] 
 
 current_left = source_list[0] #текущая последовательность
@@ -17,7 +17,7 @@ max_left = source_list[0]
 max_right = source_list[0]
 
 index=0
-for element in source_list: 
+for element in source_list:  
     current_left=element #берем опорный элемент текущий элемент списка
     current_right=element+1 #начинаем искать в списке элемент на 1 больше
     while current_right in source_list: #если элемент в списке
@@ -26,5 +26,4 @@ for element in source_list:
     if max_right-max_left < current_right-current_left: #если текущая последовательность оказалась больше сохраненной - то запоминаем её
         max_left=current_left
         max_right=current_right  
-    index+=1
 print(f"[{max_left},{max_right}]")
