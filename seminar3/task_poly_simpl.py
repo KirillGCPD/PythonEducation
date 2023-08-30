@@ -29,5 +29,5 @@ for i in range(k):
             str += f"{r}x^{k-i-1} "
         
 str+=" 0"
-list.
+
 print(str)
