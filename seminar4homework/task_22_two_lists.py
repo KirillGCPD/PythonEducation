@@ -18,7 +18,7 @@ def try_input_int(message, no_negative=False): #приглашение на вв
                 print("Вы ввели не целочисленное число")
     return number
 
-def union_with_no_repeats(list1:list,list2:list)->list:
+def union_with_no_repeats(list1:list,list2:list)->list: #объединяем два списка с удалением повторов
     list1.extend(list2)
     remove_repeats = set(list1)
     result=list(remove_repeats)
