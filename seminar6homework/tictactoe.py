@@ -1,8 +1,6 @@
 # Крестики нолики
 
-ai_level=20
-globi=0
-def new_board():
+def new_board(): #Пустая доска
     board=[[0 for _ in range(3)] for _ in range(3)] #пустая доска
     return board
 
@@ -10,7 +8,7 @@ def print_board(board: list): #Печатаем доску
     for item in board:  #если 0, то прочерк. Если меньше 0 то Х, иначе О
         print('|'.join(map(lambda x: "-" if x==0 else ("X" if x < 0 else "O"),item)))
 
-def make_move(board:list, xy, player:int=1): #Делаем ход move = 1 если О
+def make_move(board:list, xy, player:int=1): #Делаем ход 1=О  -1=Х
     x=xy[0] 
     y=xy[1]
     if x>=0 and x<=2 and y>=0 and y<=2:
@@ -35,7 +33,8 @@ def is_win(board,player:int=1): #Проверяем выиграл ли игро
     if board[2][0]==player and board[1][1]==player and board[0][2]==player:
         return True
     return False #в остальных случаях у нас False
-def inverse_player(player):
+
+def inverse_player(player): #вспомогательный метод
     if player==1:
         return -1
     if player==-1:
@@ -64,7 +63,7 @@ def copyboard(board): #копировать доску
             new_board[i][j]=board[i][j]
     return new_board
 
-def game_is_over(board):
+def game_is_over(board): #проверка на конец игры
     moves=generate_moves(board)
     if len(moves)==0:
         return True
@@ -74,7 +73,7 @@ def game_is_over(board):
         return True
     return False
 
-def ask_player_move(board,player=-1):
+def ask_player_move(board,player=-1): #спросить у пользователя ход, спрашивать пока ход не будет сделан корректно
     is_moved=False
     while is_moved!=True:
         try:
@@ -88,7 +87,7 @@ def ask_player_move(board,player=-1):
         except:
             print("Вы ввели некорректное значение, попробуйте еще раз")
 
-def minimax(board,is_max:bool=True):
+def minimax(board,is_max:bool=True): #основной алгоритм поиска лучшего хода
     if game_is_over(board):
         return [score_board(board),(-1,-1)]
     moves=generate_moves(board)
