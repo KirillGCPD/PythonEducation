@@ -9,7 +9,7 @@
 **Ввод:** `print_operation_table(lambda x, y: x * y) ` 
 **Вывод:**"""
 
-
+#С единицы начинаем на случай если операция будет с делением
 def print_operation_table(operation, num_rows=6, num_columns=6):
     for x in range(1,num_rows+1):
         for y in range(1,num_columns+1):
